@@ -1,14 +1,13 @@
-const { isValid } = require('date-fns');
+const { isValid, getTime } = require('date-fns');
 
-const isDate = (value) => {
+const isDate = (dateValue) => {
+    if (!dateValue) return false;
 
-    if(!value) return false;
+    const getMiliseconds = getTime(dateValue);
 
-    const date = isValid(value);
+    const date = isValid(getMiliseconds);
 
     return date;
-}
+};
 
-module.exports = {
-    isDate
-}
+module.exports = { isDate };
